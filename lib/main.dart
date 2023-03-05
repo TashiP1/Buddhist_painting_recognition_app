@@ -5,10 +5,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'background.dart';
 
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
-import 'package:tflite/tflite.dart';
-
+import 'ui_design/Help.dart';
+import 'ui_design/dashboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           pageBuilder: (context, _, __) => const HomeScreen(),
-          transitionDuration: const Duration(milliseconds: 900),
+          transitionDuration: const Duration(milliseconds: 3000),
           transitionsBuilder: (_, animation, __, child) {
             return FadeTransition(
               opacity: animation,
@@ -101,7 +99,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 20,
                 ),
                 SpinKitThreeInOut(
-                  size: 40.0,
+                  size: 30.0,
                   duration: const Duration(seconds: 1),
                   itemBuilder: (BuildContext context, int index) {
                     return DecoratedBox(
@@ -145,19 +143,55 @@ class _SplashScreenState extends State<SplashScreen> {
 
 // HomScreen section
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int currentIndex = 0;
+  final screens = [
+    const dashboard(),
+    const help(),
+  ];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text('Hello world'),
+      body: screens[currentIndex],
+      bottomNavigationBar: Container(
+        height: 80,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+          boxShadow: [
+            BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 5),
           ],
+        ),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(25.0),
+            topRight: Radius.circular(25.0),
+          ),
+          child: BottomNavigationBar(
+            selectedItemColor: const Color.fromARGB(225, 232, 104, 32),
+            unselectedItemColor: const Color.fromARGB(179, 43, 38, 38),
+            iconSize: 25,
+            selectedFontSize: 13,
+            currentIndex: currentIndex,
+            onTap: (index) => setState(() => currentIndex = index),
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_filled),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.help_center_outlined),
+                label: 'Help',
+              ),
+            ],
+          ),
         ),
       ),
     );
