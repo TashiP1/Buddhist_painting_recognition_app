@@ -41,7 +41,7 @@ class _dashboardState extends State<dashboard> {
                 carouselController: carouselController,
                 options: CarouselOptions(
                   scrollPhysics: const BouncingScrollPhysics(),
-                  autoPlayInterval: const Duration(seconds: 8),
+                  autoPlayInterval: const Duration(seconds: 4),
                   autoPlayAnimationDuration: const Duration(milliseconds: 2000),
                   autoPlay: true,
                   aspectRatio: 2,
