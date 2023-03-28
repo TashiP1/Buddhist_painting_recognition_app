@@ -119,12 +119,6 @@ class _BlockColorPickerExampleState extends State<BlockColorPickerExample> {
             const SizedBox(
               height: 20,
             ),
-            const Text(
-              "Themes",
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
             TextButton(
                 onPressed: () {
                   showDialog(
@@ -149,13 +143,17 @@ class _BlockColorPickerExampleState extends State<BlockColorPickerExample> {
                 },
                 child: Row(
                   children: [
-                    const Icon(Icons.theaters),
+                    const Image(
+                      image: AssetImage('assets/theme.png'),
+                      width: 40,
+                    ),
                     const SizedBox(
                       width: 10,
                     ),
                     Text(
                       'Select Theme',
                       style: TextStyle(
+                          fontSize: 16,
                           color: useWhiteForeground(widget.pickerColor)
                               ? Colors.white
                               : Colors.black),

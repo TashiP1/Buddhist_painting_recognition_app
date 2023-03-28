@@ -186,10 +186,10 @@ class _dashboardState extends State<dashboard> {
                   ),
                 ),
               ),
-              const Icon(
-                Icons.start,
-                size: 30.0,
-              )
+              const Image(
+                image: AssetImage('assets/start.png'),
+                width: 40,
+              ),
             ],
           ),
         )
