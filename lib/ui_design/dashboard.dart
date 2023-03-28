@@ -1,6 +1,9 @@
 import 'package:buddhist_painting_recognition_app/Detection/detection.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import '/pickers/block_picker.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class dashboard extends StatefulWidget {
   const dashboard({super.key});
@@ -10,6 +13,17 @@ class dashboard extends StatefulWidget {
 }
 
 class _dashboardState extends State<dashboard> {
+  Color currentColor = const Color.fromARGB(225, 232, 104, 32);
+  List<Color> currentColors = [
+    const Color.fromARGB(225, 232, 104, 32),
+    Colors.green
+  ];
+  List<Color> colorHistory = [];
+
+  void changeColor(Color color) => setState(() => currentColor = color);
+  void changeColors(List<Color> colors) =>
+      setState(() => currentColors = colors);
+
   List imageList = [
     {"id": 1, "image_path": 'assets/slider.jpg'},
     {"id": 2, "image_path": 'assets/slider1.jpg'},
@@ -20,9 +34,12 @@ class _dashboardState extends State<dashboard> {
 
   @override
   Widget build(BuildContext context) {
+    final foregroundColor =
+        useWhiteForeground(currentColor) ? Colors.white : Colors.black;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(225, 232, 104, 32),
+        backgroundColor: currentColor,
+        foregroundColor: foregroundColor,
       ),
       body: Column(children: [
         Stack(
@@ -115,39 +132,91 @@ class _dashboardState extends State<dashboard> {
         const SizedBox(
           height: 20,
         ),
-        ElevatedButton.icon(
-          icon: const Icon(Icons.start_sharp),
-          label: const Text("Get Started"),
-          onPressed: () {
-            Navigator.push(
-              context,
-              PageRouteBuilder(
-                pageBuilder: (context, _, __) => const detectionpage(),
-                transitionDuration: const Duration(milliseconds: 1000),
-                transitionsBuilder: (_, animation, __, child) {
-                  return SlideTransition(
-                    position: Tween<Offset>(
-                      begin: const Offset(0.0, 1.0),
-                      end: Offset.zero,
-                    ).animate(animation),
-                    child: child,
-                  );
-                },
+        Container(
+          width: 200.0,
+          decoration: BoxDecoration(
+            boxShadow: const [
+              BoxShadow(
+                offset: Offset(0.0, 20.0),
+                blurRadius: 30.0,
+                color: Colors.black12,
               ),
-            );
-          },
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.all(15.00),
-            fixedSize: const Size(200, 50),
-            backgroundColor: const Color.fromARGB(255, 236, 178, 77),
-            textStyle:
-                const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(13),
-            ),
+            ],
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(22.0),
           ),
-        ),
+          child: Row(
+            children: [
+              InkWell(
+                onTap: () => {
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, _, __) => const detectionpage(),
+                      transitionDuration: const Duration(milliseconds: 1000),
+                      transitionsBuilder: (_, animation, __, child) {
+                        return SlideTransition(
+                          position: Tween<Offset>(
+                            begin: const Offset(0.0, 1.0),
+                            end: Offset.zero,
+                          ).animate(animation),
+                          child: child,
+                        );
+                      },
+                    ),
+                  )
+                },
+                child: Container(
+                  height: 60.0,
+                  width: 130.0,
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 12.0),
+                  decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 236, 178, 77),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(95.0),
+                          topLeft: Radius.circular(25.0),
+                          bottomRight: Radius.circular(200.0))),
+                  child: Text(
+                    "Get Started",
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelLarge
+                        ?.apply(color: Colors.white),
+                  ),
+                ),
+              ),
+              const Icon(
+                Icons.start,
+                size: 30.0,
+              )
+            ],
+          ),
+        )
       ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+              top: Radius.circular(16),
+            )),
+            builder: (context) => Center(
+              child: BlockColorPickerExample(
+                pickerColor: currentColor,
+                onColorChanged: changeColor,
+                pickerColors: currentColors,
+                onColorsChanged: changeColors,
+                colorHistory: colorHistory,
+              ),
+            ),
+          );
+        },
+        backgroundColor: currentColor,
+        foregroundColor: foregroundColor,
+        child: const Icon(Icons.settings),
+      ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -164,13 +233,6 @@ class _dashboardState extends State<dashboard> {
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text(' About us '),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text(' Settings'),
               onTap: () {
                 Navigator.pop(context);
               },

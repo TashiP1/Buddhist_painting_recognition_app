@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           pageBuilder: (context, _, __) => const HomeScreen(),
-          transitionDuration: const Duration(milliseconds: 3000),
+          transitionDuration: const Duration(milliseconds: 2300),
           transitionsBuilder: (_, animation, __, child) {
             return FadeTransition(
               opacity: animation,
@@ -98,7 +98,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                SpinKitThreeInOut(
+                SpinKitThreeBounce(
                   size: 30.0,
                   duration: const Duration(seconds: 1),
                   itemBuilder: (BuildContext context, int index) {
