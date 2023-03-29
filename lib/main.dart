@@ -1,12 +1,11 @@
+import 'package:buddhist_painting_recognition_app/Home.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 import 'background.dart';
-
-import 'ui_design/Help.dart';
-import 'ui_design/dashboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3)).then((value) {
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
-          pageBuilder: (context, _, __) => const HomeScreen(),
+          pageBuilder: (context, _, __) => const onboard(),
           transitionDuration: const Duration(milliseconds: 2300),
           transitionsBuilder: (_, animation, __, child) {
             return FadeTransition(
@@ -100,7 +99,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
                 SpinKitThreeBounce(
                   size: 30.0,
-                  duration: const Duration(seconds: 1),
+                  duration: const Duration(seconds: 2),
                   itemBuilder: (BuildContext context, int index) {
                     return DecoratedBox(
                       decoration: BoxDecoration(
@@ -141,59 +140,115 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-// HomScreen section
+// onbording page section
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class onboard extends StatefulWidget {
+  const onboard({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<onboard> createState() => _onboardState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 0;
-  final screens = [
-    const dashboard(),
-    const help(),
-  ];
+class _onboardState extends State<onboard> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[currentIndex],
-      bottomNavigationBar: Container(
-        height: 80,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-          boxShadow: [
-            BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 5),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(25.0),
-            topRight: Radius.circular(25.0),
-          ),
-          child: BottomNavigationBar(
-            selectedItemColor: const Color.fromARGB(225, 232, 104, 32),
-            unselectedItemColor: const Color.fromARGB(179, 43, 38, 38),
-            iconSize: 25,
-            selectedFontSize: 13,
-            currentIndex: currentIndex,
-            onTap: (index) => setState(() => currentIndex = index),
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled),
-                label: 'Home',
+    return IntroductionScreen(
+      showNextButton: true,
+      done: const Text(
+        "Done",
+        style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 223, 98, 40),
+            fontSize: 16),
+      ),
+      pages: [
+        PageViewModel(
+          title: 'Kuzu zangpola',
+          bodyWidget: Column(
+            children: const [
+              Text(
+                  'Aimed at promoting the rich cultural heritage of Bhutan and its revered religious figures.',
+                  textAlign: TextAlign.center),
+              SizedBox(
+                height: 20,
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.help_center_outlined),
-                label: 'Help',
+              Text(
+                  'Hope to gain a deeper appreciation for Bhutans cultural identity and encourage further exploration of this fascinating corner of the world.',
+                  textAlign: TextAlign.center),
+              SizedBox(
+                height: 40,
+              ),
+              Image(
+                image: AssetImage('assets/border.png'),
+                width: 250,
               ),
             ],
           ),
+          image: buildImage('assets/onboard1.png'),
+          decoration: getPageDecoration(),
         ),
+        PageViewModel(
+          title: 'What We Offer',
+          bodyWidget: Column(
+            children: const [
+              Text(
+                  'Our application uses advanced computer vision algorithms to live detect celestial beings in Buddhist paintings.',
+                  textAlign: TextAlign.center),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                  'It provides users with detailed information on the being, including their name, significance, and other relevant details.',
+                  textAlign: TextAlign.center),
+              SizedBox(
+                height: 40,
+              ),
+              Image(
+                image: AssetImage('assets/border.png'),
+                width: 250,
+              ),
+            ],
+          ),
+          image: buildImage('assets/onboard2.png'),
+          decoration: getPageDecoration(),
+        ),
+      ],
+      onDone: () => goToHome(context),
+      showSkipButton: true,
+      skip: const Text(
+        'Skip',
+        style: TextStyle(color: Color.fromARGB(255, 223, 98, 40), fontSize: 16),
       ),
+      onSkip: () => goToHome(context),
+      next: const Icon(
+        Icons.arrow_forward,
+        color: Color.fromARGB(255, 223, 98, 40),
+      ),
+      dotsDecorator: getDotDecoration(),
     );
   }
+
+  void goToHome(context) => Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+
+  Widget buildImage(String path) => Container(
+        margin: const EdgeInsets.only(top: 100),
+        child: Image.asset(path, width: 300),
+      );
+
+  DotsDecorator getDotDecoration() => DotsDecorator(
+        color: const Color.fromARGB(255, 181, 153, 140),
+        size: const Size(10, 10),
+        activeColor: const Color.fromARGB(255, 223, 98, 40),
+        activeSize: const Size(22, 10),
+        activeShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+      );
+
+  PageDecoration getPageDecoration() => const PageDecoration(
+        titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        bodyPadding: EdgeInsets.all(20),
+      );
 }
