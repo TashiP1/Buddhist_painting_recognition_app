@@ -2,6 +2,7 @@ import 'package:buddhist_painting_recognition_app/Detection/detection.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import '../Drawer/about_us.dart';
 import '/pickers/block_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -59,7 +60,7 @@ class _dashboardState extends State<dashboard> {
                 options: CarouselOptions(
                   scrollPhysics: const BouncingScrollPhysics(),
                   autoPlayInterval: const Duration(seconds: 4),
-                  autoPlayAnimationDuration: const Duration(milliseconds: 2000),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 1000),
                   autoPlay: true,
                   aspectRatio: 2,
                   viewportFraction: 1,
@@ -231,14 +232,24 @@ class _dashboardState extends State<dashboard> {
               ],
             )),
             ListTile(
-              leading: const Icon(Icons.person),
+              leading: const Icon(
+                Icons.person,
+                color: Color.fromARGB(225, 232, 104, 32),
+                size: 30,
+              ),
               title: const Text(' About us '),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => about(),
+                ));
               },
             ),
             ListTile(
-              leading: const Icon(Icons.rate_review),
+              leading: const Icon(
+                Icons.rate_review,
+                color: Color.fromARGB(225, 232, 104, 32),
+                size: 30,
+              ),
               title: const Text(' Rate us'),
               onTap: () {
                 Navigator.pop(context);
