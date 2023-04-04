@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Drawer/about_us.dart';
 
 class help extends StatefulWidget {
   const help({super.key});
@@ -57,14 +58,24 @@ class _helpState extends State<help> {
               ],
             )),
             ListTile(
-              leading: const Icon(Icons.person),
+              leading: const Icon(
+                Icons.person,
+                color: Color.fromARGB(225, 232, 104, 32),
+                size: 30,
+              ),
               title: const Text(' About us '),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const about(),
+                ));
               },
             ),
             ListTile(
-              leading: const Icon(Icons.rate_review),
+              leading: const Icon(
+                Icons.rate_review,
+                color: Color.fromARGB(225, 232, 104, 32),
+                size: 30,
+              ),
               title: const Text(' Rate us'),
               onTap: () {
                 Navigator.pop(context);
