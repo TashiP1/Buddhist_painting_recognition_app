@@ -23,10 +23,27 @@ class _aboutState extends State<about> {
           backgroundColor: const Color.fromARGB(225, 232, 104, 32)),
       body: ListView(
         padding: const EdgeInsets.all(6),
-        children: [Karma(), Tashi(), Prem(), NarMaya()],
+        children: [desc(), Karma(), Tashi(), Prem(), NarMaya()],
       ),
     );
   }
+
+ Widget desc() => Container(
+      margin: const EdgeInsets.all(20),
+      child: Column(
+        children: const [
+          Text("Developers", style: TextStyle(
+            fontSize: 17,
+          ),),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+              "We, a group of students at the College of Science and Technology, developed an object detection project under the guidance of Sir Karma Wangchuck. We hope that our project will inspire others to explore the possibilities of computer vision and contribute to the development of innovative solutions to promote Bhutan.",
+              style: TextStyle(fontSize: 15, height: 1.3),
+              textAlign: TextAlign.justify),
+        ],
+      ));
 
   Widget Karma() => Card(
         margin: const EdgeInsets.all(10),
@@ -36,32 +53,33 @@ class _aboutState extends State<about> {
         ),
         child: Column(
           children: [
-            const SizedBox(
-              height: 10,
-            ),
-            const Image(
-              image: AssetImage('about/Karma.jpg'),
-              width: 100,
-            ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: const [
-                  Text("Karma Wangchuk"),
-                  SizedBox(
-                    height: 8,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                const Image(
+                  image: AssetImage('about/Karma.jpg'),
+                  width: 90,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: const [
+                      Text("Karma Wangchuk"),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text("karma.cst@rub.edu.bt"),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text("77259089"),
+                    ],
                   ),
-                  Text("College of Science and Technology"),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text("Karma@gmail.com"),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text("77445532"),
-                ],
-              ),
+                ),
+              ],
             ),
             ButtonBar(
               alignment: MainAxisAlignment.center,
@@ -101,32 +119,33 @@ class _aboutState extends State<about> {
         ),
         child: Column(
           children: [
-            const SizedBox(
-              height: 10,
-            ),
-            const Image(
-              image: AssetImage('about/Tashi.jpg'),
-              width: 100,
-            ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: const [
-                  Text("Tashi Phuntsho"),
-                  SizedBox(
-                    height: 8,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                const Image(
+                  image: AssetImage('about/Tashi.jpg'),
+                  width: 100,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: const [
+                      Text("Tashi Phuntsho"),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text("02190161.cst@rub.edu.bt"),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text("77334451"),
+                    ],
                   ),
-                  Text("College of Science and Technology"),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text("02190161.cst@rub.edu.bt"),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text("77334451"),
-                ],
-              ),
+                ),
+              ],
             ),
             ButtonBar(
               alignment: MainAxisAlignment.center,
@@ -166,32 +185,33 @@ class _aboutState extends State<about> {
         ),
         child: Column(
           children: [
-            const SizedBox(
-              height: 10,
-            ),
-            const Image(
-              image: AssetImage('about/prem.jpg'),
-              width: 100,
-            ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: const [
-                  Text("Prem Bdr Bhandari"),
-                  SizedBox(
-                    height: 8,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                const Image(
+                  image: AssetImage('about/prem.jpg'),
+                  width: 100,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: const [
+                      Text("Prem Bdr Bhandari"),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text("02190151.cst@rub.edu.bt"),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text("77334466"),
+                    ],
                   ),
-                  Text("College of Science and Technology"),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text("02190151.cst@rub.edu.bt"),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text("77334466"),
-                ],
-              ),
+                ),
+              ],
             ),
             ButtonBar(
               alignment: MainAxisAlignment.center,
@@ -231,32 +251,33 @@ class _aboutState extends State<about> {
         ),
         child: Column(
           children: [
-            const SizedBox(
-              height: 10,
-            ),
-            const Image(
-              image: AssetImage('about/NarMaya.jpg'),
-              width: 100,
-            ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: const [
-                  Text("Nar Maya Tamang"),
-                  SizedBox(
-                    height: 8,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                const Image(
+                  image: AssetImage('about/NarMaya.jpg'),
+                  width: 100,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: const [
+                      Text("Nar Maya Tamang"),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text("02190143.cst@rub.edu.bt"),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text("77334465"),
+                    ],
                   ),
-                  Text("College of Science and Technology"),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text("02190143.cst@rub.edu.bt"),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text("77334465"),
-                ],
-              ),
+                ),
+              ],
             ),
             ButtonBar(
               alignment: MainAxisAlignment.center,

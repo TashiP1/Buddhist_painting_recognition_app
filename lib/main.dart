@@ -209,7 +209,7 @@ class _onboardState extends State<onboard> {
               ),
             ],
           ),
-          image: buildImage('assets/onboard2.png'),
+          image: buildImage('assets/onboard2.jpg'),
           decoration: getPageDecoration(),
         ),
       ],
