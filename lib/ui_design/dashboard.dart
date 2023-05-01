@@ -105,8 +105,9 @@ class _dashboardState extends State<dashboard> {
         const Text(
           "Welcome",
           style: TextStyle(
-            fontSize: 25.0,
+            fontSize: 30.0,
             fontWeight: FontWeight.bold,
+            fontFamily: 'Dosis',
           ),
         ),
         const SizedBox(
@@ -116,7 +117,10 @@ class _dashboardState extends State<dashboard> {
             margin: const EdgeInsets.all(17),
             child: Column(
               children: const [
-                Text("A quote by the Dalai Lama"),
+                Text(
+                  "A quote by the Dalai Lama",
+                  style: TextStyle(fontFamily: 'Dosis', fontSize: 17),
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -124,9 +128,10 @@ class _dashboardState extends State<dashboard> {
                   "“All the elements of a Tibetan religious painting have a symbolic value. These symbols serve as aids to developing inner qualities on the spiritual path. The deities themselves are regarded as representing particular characteristics of enlightenment.“",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                    height: 1.3,
-                  ),
+                      fontStyle: FontStyle.italic,
+                      height: 1.4,
+                      fontFamily: 'Dosis',
+                      fontSize: 16),
                 ),
               ],
             )),
@@ -180,10 +185,8 @@ class _dashboardState extends State<dashboard> {
                           bottomRight: Radius.circular(200.0))),
                   child: Text(
                     "Get Started",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelLarge
-                        ?.apply(color: Colors.white),
+                    style: Theme.of(context).textTheme.labelLarge?.apply(
+                        color: const Color.fromARGB(255, 239, 240, 243)),
                   ),
                 ),
               ),

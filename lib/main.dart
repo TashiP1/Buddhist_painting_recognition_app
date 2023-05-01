@@ -92,44 +92,24 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 const Image(
                   image: AssetImage('assets/bp_icon.png'),
-                  width: 150,
+                  width: 200,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                SpinKitThreeBounce(
-                  size: 30.0,
+                SpinKitFadingCircle(
+                  size: 70.0,
                   duration: const Duration(seconds: 2),
                   itemBuilder: (BuildContext context, int index) {
                     return DecoratedBox(
                       decoration: BoxDecoration(
                         color: index.isEven
-                            ? const Color.fromARGB(255, 237, 48, 111)
+                            ? const Color.fromARGB(255, 235, 228, 230)
                             : const Color.fromARGB(255, 48, 149, 231),
                         shape: BoxShape.circle,
                       ),
                     );
                   },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  "BUDDHIST PAINTING",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const Text(
-                  "Detect and know the Celestial being",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
               ],
             ),
@@ -163,20 +143,22 @@ class _onboardState extends State<onboard> {
       ),
       pages: [
         PageViewModel(
-          title: 'Kuzu zangpola',
+          title: '',
           bodyWidget: Column(
             children: const [
               Text(
                   'Aimed at promoting the rich cultural heritage of Bhutan and its revered religious figures.',
+                  style: TextStyle(fontFamily: 'Dosis', fontSize: 16),
                   textAlign: TextAlign.center),
               SizedBox(
                 height: 20,
               ),
               Text(
                   'Hope to gain a deeper appreciation for Bhutans cultural identity and encourage further exploration of this fascinating corner of the world.',
+                  style: TextStyle(fontFamily: 'Dosis', fontSize: 16),
                   textAlign: TextAlign.center),
               SizedBox(
-                height: 40,
+                height: 70,
               ),
               Image(
                 image: AssetImage('assets/border.png'),
@@ -188,20 +170,22 @@ class _onboardState extends State<onboard> {
           decoration: getPageDecoration(),
         ),
         PageViewModel(
-          title: 'What We Offer',
+          title: '',
           bodyWidget: Column(
             children: const [
               Text(
                   'Our application uses advanced computer vision algorithms to live detect celestial beings in Buddhist paintings.',
+                  style: TextStyle(fontFamily: 'Dosis', fontSize: 16),
                   textAlign: TextAlign.center),
               SizedBox(
                 height: 20,
               ),
               Text(
                   'It provides users with detailed information on the being, including their name, significance, and other relevant details.',
+                  style: TextStyle(fontFamily: 'Dosis', fontSize: 16),
                   textAlign: TextAlign.center),
               SizedBox(
-                height: 40,
+                height: 50,
               ),
               Image(
                 image: AssetImage('assets/border.png'),
@@ -209,7 +193,7 @@ class _onboardState extends State<onboard> {
               ),
             ],
           ),
-          image: buildImage('assets/onboard2.jpg'),
+          image: buildImage('assets/onboard2.png'),
           decoration: getPageDecoration(),
         ),
       ],
@@ -234,7 +218,7 @@ class _onboardState extends State<onboard> {
 
   Widget buildImage(String path) => Container(
         margin: const EdgeInsets.only(top: 100),
-        child: Image.asset(path, width: 300),
+        child: Image.asset(path, width: 400),
       );
 
   DotsDecorator getDotDecoration() => DotsDecorator(
@@ -249,6 +233,6 @@ class _onboardState extends State<onboard> {
 
   PageDecoration getPageDecoration() => const PageDecoration(
         titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        bodyPadding: EdgeInsets.all(20),
+        bodyPadding: EdgeInsets.only(left: 20, right: 20),
       );
 }

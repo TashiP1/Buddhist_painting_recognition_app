@@ -90,7 +90,10 @@ class _helpState extends State<help> {
   List<Step> getSteps() => [
         Step(
           isActive: currentStep >= 0,
-          title: const Text("Overview"),
+          title: const Text(
+            "Overview",
+            style: TextStyle(fontFamily: 'Dosis', fontSize: 17),
+          ),
           content: Container(
             margin: const EdgeInsets.all(5),
             child: Column(
@@ -107,6 +110,8 @@ class _helpState extends State<help> {
                           SizedBox(height: 10),
                           Text(
                               "Information on the Developers are given in the about us page",
+                              style:
+                                  TextStyle(fontFamily: 'Dosis', fontSize: 16),
                               textAlign: TextAlign.justify)
                         ],
                       ),
@@ -121,6 +126,8 @@ class _helpState extends State<help> {
                           ),
                           SizedBox(height: 10),
                           Text("Change Theme and Select Language",
+                              style:
+                                  TextStyle(fontFamily: 'Dosis', fontSize: 16),
                               textAlign: TextAlign.justify)
                         ],
                       ),
@@ -134,6 +141,7 @@ class _helpState extends State<help> {
                 ),
                 const Text(
                     "Click the 'Get Started' button to start with the live detection.",
+                    style: TextStyle(fontFamily: 'Dosis', fontSize: 16),
                     textAlign: TextAlign.justify)
               ],
             ),
@@ -141,7 +149,8 @@ class _helpState extends State<help> {
         ),
         Step(
           isActive: currentStep >= 1,
-          title: const Text("Image From Gallery"),
+          title: const Text("Image From Gallery",
+              style: TextStyle(fontFamily: 'Dosis', fontSize: 17)),
           content: Container(
             margin: const EdgeInsets.all(5),
             child: Column(
@@ -162,6 +171,7 @@ class _helpState extends State<help> {
                 const SizedBox(height: 15),
                 const Text(
                     "To detect different paintings in an image, you can access your gallery by clicking on the designated button. This will allow you to upload the image in which you want to detect the different paintings. ",
+                    style: TextStyle(fontFamily: 'Dosis', fontSize: 16),
                     textAlign: TextAlign.justify)
               ],
             ),
@@ -169,7 +179,8 @@ class _helpState extends State<help> {
         ),
         Step(
           isActive: currentStep >= 2,
-          title: const Text("Live Detection"),
+          title: const Text("Live Detection",
+              style: TextStyle(fontFamily: 'Dosis', fontSize: 17)),
           content: Container(
             margin: const EdgeInsets.all(5),
             child: Column(
@@ -190,6 +201,7 @@ class _helpState extends State<help> {
                 const SizedBox(height: 15),
                 const Text(
                     "To access your camera, simply press the button and point it towards the direction of the Buddhist paintings. The camera will then detect the image and display the name of the painting.",
+                    style: TextStyle(fontFamily: 'Dosis', fontSize: 16),
                     textAlign: TextAlign.justify)
               ],
             ),
@@ -197,7 +209,8 @@ class _helpState extends State<help> {
         ),
         Step(
           isActive: currentStep >= 3,
-          title: const Text("Display Prediction"),
+          title: const Text("Display Prediction",
+              style: TextStyle(fontFamily: 'Dosis', fontSize: 17)),
           content: Container(
             margin: const EdgeInsets.all(5),
             child: Column(
@@ -218,6 +231,7 @@ class _helpState extends State<help> {
                 const SizedBox(height: 15),
                 const Text(
                     "After uploading or capturing an image using the detection feature, the system will correctly recognize the celestial object and display its name. The user can then click the 'detail' button to access more information about the being.",
+                    style: TextStyle(fontFamily: 'Dosis', fontSize: 16),
                     textAlign: TextAlign.justify)
               ],
             ),

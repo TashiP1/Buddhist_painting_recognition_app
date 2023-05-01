@@ -17,7 +17,8 @@ class _aboutState extends State<about> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomeScreen()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
             },
           ),
           backgroundColor: const Color.fromARGB(225, 232, 104, 32)),
@@ -28,19 +29,24 @@ class _aboutState extends State<about> {
     );
   }
 
- Widget desc() => Container(
+  Widget desc() => Container(
       margin: const EdgeInsets.all(20),
       child: Column(
         children: const [
-          Text("Developers", style: TextStyle(
-            fontSize: 17,
-          ),),
+          Text(
+            "Developers",
+            style: TextStyle(
+              fontSize: 18,
+              fontFamily: 'Dosis',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           SizedBox(
             height: 10,
           ),
           Text(
               "We, a group of students at the College of Science and Technology, developed an object detection project under the guidance of Sir Karma Wangchuck. We hope that our project will inspire others to explore the possibilities of computer vision and contribute to the development of innovative solutions to promote Bhutan.",
-              style: TextStyle(fontSize: 15, height: 1.3),
+              style: TextStyle(fontSize: 16, height: 1.3, fontFamily: 'Dosis'),
               textAlign: TextAlign.justify),
         ],
       ));
@@ -67,15 +73,17 @@ class _aboutState extends State<about> {
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     children: const [
-                      Text("Karma Wangchuk"),
+                      Text("Karma Wangchuk",
+                          style: TextStyle(fontFamily: 'Dosis')),
                       SizedBox(
                         height: 8,
                       ),
-                      Text("karma.cst@rub.edu.bt"),
+                      Text("karma.cst@rub.edu.bt",
+                          style: TextStyle(fontFamily: 'Dosis')),
                       SizedBox(
                         height: 8,
                       ),
-                      Text("77259089"),
+                      Text("77259089", style: TextStyle(fontFamily: 'Dosis')),
                     ],
                   ),
                 ),
@@ -133,15 +141,17 @@ class _aboutState extends State<about> {
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     children: const [
-                      Text("Tashi Phuntsho"),
+                      Text("Tashi Phuntsho",
+                          style: TextStyle(fontFamily: 'Dosis')),
                       SizedBox(
                         height: 8,
                       ),
-                      Text("02190161.cst@rub.edu.bt"),
+                      Text("02190161.cst@rub.edu.bt",
+                          style: TextStyle(fontFamily: 'Dosis')),
                       SizedBox(
                         height: 8,
                       ),
-                      Text("77334451"),
+                      Text("77334451", style: TextStyle(fontFamily: 'Dosis')),
                     ],
                   ),
                 ),
@@ -199,15 +209,17 @@ class _aboutState extends State<about> {
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     children: const [
-                      Text("Prem Bdr Bhandari"),
+                      Text("Prem Bdr Bhandari",
+                          style: TextStyle(fontFamily: 'Dosis')),
                       SizedBox(
                         height: 8,
                       ),
-                      Text("02190151.cst@rub.edu.bt"),
+                      Text("02190151.cst@rub.edu.bt",
+                          style: TextStyle(fontFamily: 'Dosis')),
                       SizedBox(
                         height: 8,
                       ),
-                      Text("77334466"),
+                      Text("77334466", style: TextStyle(fontFamily: 'Dosis')),
                     ],
                   ),
                 ),
@@ -265,15 +277,17 @@ class _aboutState extends State<about> {
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     children: const [
-                      Text("Nar Maya Tamang"),
+                      Text("Nar Maya Tamang",
+                          style: TextStyle(fontFamily: 'Dosis')),
                       SizedBox(
                         height: 8,
                       ),
-                      Text("02190143.cst@rub.edu.bt"),
+                      Text("02190143.cst@rub.edu.bt",
+                          style: TextStyle(fontFamily: 'Dosis')),
                       SizedBox(
                         height: 8,
                       ),
-                      Text("77334465"),
+                      Text("77334465", style: TextStyle(fontFamily: 'Dosis')),
                     ],
                   ),
                 ),
