@@ -1,8 +1,8 @@
-import 'package:buddhist_painting_recognition_app/Detection/detection.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import '../Drawer/about_us.dart';
+import '../detectionpage.dart';
 import '/pickers/block_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

@@ -92,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 const Image(
                   image: AssetImage('assets/bp_icon.png'),
-                  width: 200,
+                  width: 170,
                 ),
                 const SizedBox(
                   height: 20,
@@ -213,7 +213,7 @@ class _onboardState extends State<onboard> {
   }
 
   void goToHome(context) => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
 
   Widget buildImage(String path) => Container(
