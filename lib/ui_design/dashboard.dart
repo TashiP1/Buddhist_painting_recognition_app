@@ -225,15 +225,14 @@ class _dashboardState extends State<dashboard> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
-                child: Column(
-              children: const [
-                Image(
-                  image: AssetImage("assets/bp_icon.png"),
+            const DrawerHeader(
+              margin: EdgeInsets.all(0),
+              padding: EdgeInsets.all(0),
+                child: Image(
+                  image: AssetImage("assets/nav_logo.png"),
                   height: 100,
-                )
-              ],
-            )),
+                  fit: BoxFit.fill,
+                )),
             ListTile(
               leading: const Icon(
                 Icons.person,
@@ -253,7 +252,7 @@ class _dashboardState extends State<dashboard> {
                 color: Color.fromARGB(225, 232, 104, 32),
                 size: 30,
               ),
-              title: const Text(' Rate us'),
+              title: const Text(' Provide Feedback'),
               onTap: () {
                 Navigator.pop(context);
               },

@@ -200,7 +200,7 @@ class _helpState extends State<help> {
                 ),
                 const SizedBox(height: 15),
                 const Text(
-                    "To access your camera, simply press the button and point it towards the direction of the Buddhist paintings. The camera will then detect the image and display the name of the painting.",
+                    "To access your camera, simply press the button and point it towards the direction of the Buddhist paintings. The camera will then detect the image and display the name of the painting. When clicked on the detected image, it will show the details",
                     style: TextStyle(fontFamily: 'Dosis', fontSize: 16),
                     textAlign: TextAlign.justify)
               ],
