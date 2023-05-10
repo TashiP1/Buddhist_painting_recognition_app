@@ -6,6 +6,7 @@ import 'package:flutter_pytorch/flutter_pytorch.dart';
 import 'package:flutter_pytorch/pigeon.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'ObjectDetailsScreen.dart';
 import 'RunModelByCameraDemo.dart';
 
 class detectionpage extends StatefulWidget {
@@ -58,6 +59,7 @@ class _detectionpageState extends State<detectionpage> {
         await File(image!.path).readAsBytes(),
         minimumScore: 0.1,
         IOUThershold: 0.3);
+    
     objDetect.forEach((element) {
       print({
         "score": element?.score,

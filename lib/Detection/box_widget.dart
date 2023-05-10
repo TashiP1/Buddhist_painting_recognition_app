@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pytorch/pigeon.dart';
+import '../ObjectDetailsScreen.dart';
 import 'camera_view_singleton.dart';
-
 
 /// Individual bounding box
 class BoxWidget extends StatelessWidget {
@@ -57,20 +57,26 @@ class BoxWidget extends StatelessWidget {
             alignment: Alignment.centerRight,
             color: usedColor,
             child: Text(
-              (result.className ?? result.classIndex.toString()) +
-                  "_" +
-                  (showPercentage
-                      ? (result.score * 100).toStringAsFixed(2) + "%"
-                      : ""),
+              (result.className ?? result.classIndex.toString()),
             ),
           ),
-          Container(
-            width: result.rect.width.toDouble() * factorX,
-            height: result.rect.height.toDouble() * factorY,
-            decoration: BoxDecoration(
-                border: Border.all(color: usedColor!, width: 3),
-                borderRadius: BorderRadius.all(Radius.circular(2))),
-            child: Container(),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ObjectDetails(parameter: result.className.toString()),
+                ),
+              );
+            },
+            child: Container(
+              width: result.rect.width.toDouble() * factorX,
+              height: result.rect.height.toDouble() * factorY,
+              decoration: BoxDecoration(
+                  border: Border.all(color: usedColor!, width: 3),
+                  borderRadius: const BorderRadius.all(Radius.circular(2))),
+              child: Container(),
+            ),
           ),
         ],
       ),

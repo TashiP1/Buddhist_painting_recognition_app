@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "508127193577",
+    "project_id": "buddhist58-51e3f",
+    "storage_bucket": "buddhist58-51e3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508127193577:android:84fc955259af1fcfb74378",
+        "android_client_info": {
+          "package_name": "com.example.buddhist_painting_recognition_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508127193577-m522gd01g2of1id0d8pfgitcqpmvlvrv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUZfyvC_BJjytU8kI0RDDR0IZa5URXbLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508127193577-m522gd01g2of1id0d8pfgitcqpmvlvrv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
