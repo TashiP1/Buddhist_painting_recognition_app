@@ -20,6 +20,7 @@ class _detectionpageState extends State<detectionpage> {
   late ModelObjectDetection _objectModel;
   List? _prediction;
   String? _imagePrediction;
+  List<Map<String, dynamic>> detectedObjects = [];
   File? _image;
   ImagePicker _picker = ImagePicker();
   bool objectDetection = false;
@@ -59,9 +60,9 @@ class _detectionpageState extends State<detectionpage> {
         await File(image!.path).readAsBytes(),
         minimumScore: 0.1,
         IOUThershold: 0.3);
-    
+
     objDetect.forEach((element) {
-      print({
+      Map<String, dynamic> objectData = {
         "score": element?.score,
         "className": element?.className,
         "class": element?.classIndex,
@@ -73,8 +74,10 @@ class _detectionpageState extends State<detectionpage> {
           "right": element?.rect.right,
           "bottom": element?.rect.bottom,
         },
-      });
+      };
+      detectedObjects.add(objectData);
     });
+
     setState(() {
       //this.objDetect = objDetect;
       _image = File(image.path);
@@ -123,8 +126,8 @@ class _detectionpageState extends State<detectionpage> {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 40, right: 40, top: 100, bottom: 60),
+                    padding:
+                        const EdgeInsets.only(left: 40, right: 40, top: 100),
                     child: objDetect.isNotEmpty
                         ? _image == null
                             ? const Text(
@@ -141,13 +144,35 @@ class _detectionpageState extends State<detectionpage> {
                             : Image.file(_image!),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(30),
-                  child: Center(
-                    child: Visibility(
-                      visible: _imagePrediction != null,
-                      child: Text("$_imagePrediction"),
-                    ),
+                SizedBox(
+                  height: 200,
+                  child: ListView.builder(
+                    itemCount: detectedObjects.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      Map<String, dynamic> objectData = detectedObjects[index];
+                      return GestureDetector(
+                        onTap: () {
+                          // Navigate to the other page when ListTile is clicked
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ObjectDetails(
+                                parameter: objectData['className'],
+                              ),
+                            ),
+                          );
+                        },
+                        child: ListTile(
+                          title: Text(
+                            objectData['className'],
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Dosis',
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 Container(
