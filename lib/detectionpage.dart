@@ -10,7 +10,8 @@ import 'ObjectDetailsScreen.dart';
 import 'RunModelByCameraDemo.dart';
 
 class detectionpage extends StatefulWidget {
-  const detectionpage({super.key});
+  final Color currentColor;
+  const detectionpage({required this.currentColor, Key? key}) : super(key: key);
 
   @override
   State<detectionpage> createState() => _detectionpageState();
@@ -87,6 +88,7 @@ class _detectionpageState extends State<detectionpage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(
           children: [
@@ -95,7 +97,7 @@ class _detectionpageState extends State<detectionpage> {
               top: 10,
               child: SvgPicture.asset(
                 'assets/Border_TR.svg',
-                color: const Color.fromARGB(225, 232, 104, 32),
+                color: widget.currentColor,
               ),
             ),
             Positioned(
@@ -103,7 +105,7 @@ class _detectionpageState extends State<detectionpage> {
               top: 10,
               child: SvgPicture.asset(
                 'assets/Border_TL.svg',
-                color: const Color.fromARGB(225, 232, 104, 32),
+                color: widget.currentColor,
               ),
             ),
             Positioned(
@@ -111,7 +113,7 @@ class _detectionpageState extends State<detectionpage> {
               bottom: 10,
               child: SvgPicture.asset(
                 'assets/Border_BR.svg',
-                color: const Color.fromARGB(225, 232, 104, 32),
+                color: widget.currentColor,
               ),
             ),
             Positioned(
@@ -119,7 +121,7 @@ class _detectionpageState extends State<detectionpage> {
               bottom: 10,
               child: SvgPicture.asset(
                 'assets/Border_BL.svg',
-                color: const Color.fromARGB(225, 232, 104, 32),
+                color: widget.currentColor,
               ),
             ),
             Column(
@@ -191,7 +193,7 @@ class _detectionpageState extends State<detectionpage> {
                         },
                         style: TextButton.styleFrom(
                             backgroundColor:
-                                const Color.fromARGB(225, 232, 104, 32),
+                                widget.currentColor,
                             fixedSize: const Size(80, 60)),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -216,7 +218,7 @@ class _detectionpageState extends State<detectionpage> {
                         onPressed: runObjectDetection,
                         style: TextButton.styleFrom(
                             backgroundColor:
-                                const Color.fromARGB(225, 232, 104, 32),
+                                widget.currentColor,
                             fixedSize: const Size(80, 60)),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,

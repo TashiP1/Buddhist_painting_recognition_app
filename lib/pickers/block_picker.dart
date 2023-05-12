@@ -155,7 +155,7 @@ class _BlockColorPickerExampleState extends State<BlockColorPickerExample> {
                       style: TextStyle(
                           fontSize: 16,
                           color: useWhiteForeground(widget.pickerColor)
-                              ? Colors.white
+                              ? const Color.fromARGB(255, 13, 12, 12)
                               : Colors.black),
                     ),
                   ],

@@ -158,7 +158,7 @@ class _dashboardState extends State<dashboard> {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (context, _, __) => const detectionpage(),
+                      pageBuilder: (context, _, __) => detectionpage(currentColor:currentColor),
                       transitionDuration: const Duration(milliseconds: 1000),
                       transitionsBuilder: (_, animation, __, child) {
                         return SlideTransition(
@@ -177,12 +177,15 @@ class _dashboardState extends State<dashboard> {
                   width: 130.0,
                   padding: const EdgeInsets.symmetric(
                       vertical: 12.0, horizontal: 12.0),
-                  decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 236, 178, 77),
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(95.0),
-                          topLeft: Radius.circular(25.0),
-                          bottomRight: Radius.circular(200.0))),
+                  decoration: BoxDecoration(
+                    color: currentColor,
+                    // color: Color.fromARGB(255, 236, 178, 77),
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(95.0),
+                      topLeft: Radius.circular(25.0),
+                      bottomRight: Radius.circular(200.0),
+                    ),
+                  ),
                   child: Text(
                     "Get Started",
                     style: Theme.of(context).textTheme.labelLarge?.apply(
@@ -218,7 +221,6 @@ class _dashboardState extends State<dashboard> {
           );
         },
         backgroundColor: currentColor,
-        foregroundColor: foregroundColor,
         child: const Icon(Icons.settings),
       ),
       drawer: Drawer(
@@ -226,30 +228,30 @@ class _dashboardState extends State<dashboard> {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              margin: EdgeInsets.all(0),
-              padding: EdgeInsets.all(0),
+                margin: EdgeInsets.all(0),
+                padding: EdgeInsets.all(0),
                 child: Image(
                   image: AssetImage("assets/nav_logo.png"),
                   height: 100,
                   fit: BoxFit.fill,
                 )),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.person,
-                color: Color.fromARGB(225, 232, 104, 32),
+                color: currentColor,
                 size: 30,
               ),
               title: const Text(' About us '),
               onTap: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => about(),
+                  builder: (context) => const about(),
                 ));
               },
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.rate_review,
-                color: Color.fromARGB(225, 232, 104, 32),
+                color: currentColor,
                 size: 30,
               ),
               title: const Text(' Provide Feedback'),

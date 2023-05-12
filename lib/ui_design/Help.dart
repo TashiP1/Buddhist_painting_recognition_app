@@ -48,15 +48,14 @@ class _helpState extends State<help> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
-                child: Column(
-              children: const [
-                Image(
-                  image: AssetImage("assets/bp_icon.png"),
+            const DrawerHeader(
+                margin: EdgeInsets.all(0),
+                padding: EdgeInsets.all(0),
+                child: Image(
+                  image: AssetImage("assets/nav_logo.png"),
                   height: 100,
-                )
-              ],
-            )),
+                  fit: BoxFit.fill,
+                )),
             ListTile(
               leading: const Icon(
                 Icons.person,
