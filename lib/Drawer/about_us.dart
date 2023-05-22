@@ -45,7 +45,7 @@ class _aboutState extends State<about> {
             height: 10,
           ),
           Text(
-              "We, a group of students at the College of Science and Technology, developed an object detection project under the guidance of Sir Karma Wangchuck. We hope that our project will inspire others to explore the possibilities of computer vision and contribute to the development of innovative solutions to promote Bhutan.",
+              "We, a group of students at the College of Science and Technology, developed an object detection project under the guidance of guide Karma Wangchuk. We hope that our project will inspire others to explore the possibilities of computer vision and contribute to the development of innovative solutions to promote Bhutan.",
               style: TextStyle(fontSize: 16, height: 1.3, fontFamily: 'Dosis'),
               textAlign: TextAlign.justify),
         ],

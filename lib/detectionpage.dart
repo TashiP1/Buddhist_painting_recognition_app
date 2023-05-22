@@ -152,24 +152,50 @@ class _detectionpageState extends State<detectionpage> {
                     itemCount: detectedObjects.length,
                     itemBuilder: (BuildContext context, int index) {
                       Map<String, dynamic> objectData = detectedObjects[index];
-                      return GestureDetector(
-                        onTap: () {
-                          // Navigate to the other page when ListTile is clicked
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ObjectDetails(
-                                parameter: objectData['className'],
+                      return ListTile(
+                        title: Text(
+                          objectData['className'],
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'Dosis',
+                          ),
+                        ),
+                        trailing: GestureDetector(
+                          onTap: () {
+                            // Navigate to the other page when the button is clicked
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ObjectDetails(
+                                  parameter: objectData['className'],
+                                ),
+                              ),
+                            );
+                          },
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ObjectDetails(
+                                    parameter: objectData['className'],
+                                  ),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color.fromARGB(255, 223, 98, 40),
+                              shape: RoundedRectangleBorder(
+                                // Set the button shape
+                                borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                          );
-                        },
-                        child: ListTile(
-                          title: Text(
-                            objectData['className'],
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'Dosis',
+                            child: const Text(
+                              'View More',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'Dosis',
+                              ),
                             ),
                           ),
                         ),
@@ -192,8 +218,7 @@ class _detectionpageState extends State<detectionpage> {
                           )
                         },
                         style: TextButton.styleFrom(
-                            backgroundColor:
-                                widget.currentColor,
+                            backgroundColor: widget.currentColor,
                             fixedSize: const Size(80, 60)),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -217,8 +242,7 @@ class _detectionpageState extends State<detectionpage> {
                       TextButton(
                         onPressed: runObjectDetection,
                         style: TextButton.styleFrom(
-                            backgroundColor:
-                                widget.currentColor,
+                            backgroundColor: widget.currentColor,
                             fixedSize: const Size(80, 60)),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,

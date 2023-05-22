@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ObjectDetails extends StatefulWidget {
   final String parameter;
@@ -52,40 +53,86 @@ class _ObjectDetailsState extends State<ObjectDetails> {
 
           return Scaffold(
             appBar: AppBar(
-              backgroundColor: const Color.fromARGB(225, 232, 104, 32),
+              backgroundColor: const Color.fromARGB(255, 223, 98, 40),
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ),
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            body: Stack(
               children: [
-                Image.network(imageUrl),
-                 const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    heading,
-                    style: const TextStyle(
-                        fontSize: 16, fontFamily: 'Dosis', height: 1.4),
-                    textAlign: TextAlign.center,
+                Positioned(
+                  right: 10,
+                  bottom: 10,
+                  child: SvgPicture.asset(
+                    'assets/Border_BR.svg',
+                    color: const Color.fromARGB(255, 223, 98, 40),
                   ),
                 ),
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    description,
-                    style: const TextStyle(
-                        fontSize: 16, fontFamily: 'Dosis', height: 1.4),
-                    textAlign: TextAlign.center,
+                Positioned(
+                  left: 10,
+                  bottom: 10,
+                  child: SvgPicture.asset(
+                    'assets/Border_BL.svg',
+                    color: const Color.fromARGB(255, 223, 98, 40),
                   ),
                 ),
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    description1,
-                    style: const TextStyle(
-                        fontSize: 16, fontFamily: 'Dosis', height: 1.4),
-                    textAlign: TextAlign.center,
+                Container(
+                  margin: const EdgeInsets.only(bottom: 100),
+                  child: ListView(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.network(
+                            imageUrl,
+                            width: 300,
+                            height: 300,
+                            fit: BoxFit.contain,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              heading,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'Dosis',
+                                height: 1.4,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              description,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'Dosis',
+                                height: 1.4,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              description1,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'Dosis',
+                                height: 1.4,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],

@@ -101,7 +101,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
                 SpinKitFadingCircle(
                   size: 70.0,
-                  duration: const Duration(seconds: 2),
+                  duration: const Duration(seconds: 3),
                   itemBuilder: (BuildContext context, int index) {
                     return DecoratedBox(
                       decoration: BoxDecoration(
