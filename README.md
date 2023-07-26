@@ -1,6 +1,6 @@
 # buddhist_painting_recognition_app
 
-A new Flutter project.
+A new Flutter project. for college
 
 ## Getting Started
 
