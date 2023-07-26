@@ -9,6 +9,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+//this is home page
+
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   final screens = [
