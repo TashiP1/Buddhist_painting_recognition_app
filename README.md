@@ -1,8 +1,38 @@
-# buddhist_painting_recognition_app
 
-A new Flutter project. for college
+# Buddhist Painting Recognition App
 
-## Getting Started
+
+The project involves the development of a mobile application leveraging object detection technology and Flutter framework. This app is designed specifically for Buddhist painting recognition. It enables real-time detection through both camera and gallery functionalities. Upon identification, the application provides concise and informative descriptions of the depicted spiritual beings, enhancing users' understanding of Buddhist art and iconography.
+
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  flutter pub get
+```
+```bash
+  flutter run
+```
+
+## Demo
+
+Project Demo
+
+The Demo video is in the main Repository with the name BPRA.mp4
+
+## Features
+
+- Onboarding Page
+- Help Page
+- Side navigation
+- Color theme selection
+- Painting detection form Gallery
+- Live detection from camera
+- Painting Details page
+
+## Getting Started with flutter
 
 This project is a starting point for a Flutter application.
 
