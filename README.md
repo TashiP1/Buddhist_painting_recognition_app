@@ -24,7 +24,7 @@ Project Demo
 
 ## Documentation
 
-[Documentation](https://github.com/TashiP1/Buddhist_painting_recognition_app/blob/main/Buddhist_Final_Report.pdf)
+Download documentation here: [Documentation](https://github.com/TashiP1/Buddhist_painting_recognition_app/blob/main/Buddhist_Final_Report.pdf)
 
 ## Features
 
