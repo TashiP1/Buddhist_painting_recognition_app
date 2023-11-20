@@ -22,6 +22,10 @@ Project Demo
 
 ![](https://github.com/TashiP1/Buddhist_painting_recognition_app/blob/main/BPainting.gif)
 
+## Documentation
+
+[Documentation](https://github.com/TashiP1/Buddhist_painting_recognition_app/blob/main/Buddhist_Final_Report.pdf)
+
 ## Features
 
 - Onboarding Page
