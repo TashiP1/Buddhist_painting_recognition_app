@@ -20,7 +20,7 @@ To deploy this project run
 
 Project Demo
 
-The Demo video is in the main Repository with the name BPRA.mp4
+![](https://github.com/TashiP1/Buddhist_painting_recognition_app/blob/main/BPainting.gif)
 
 ## Features
 
