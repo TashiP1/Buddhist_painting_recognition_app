@@ -37,32 +37,65 @@ class _RunModelByCameraDemoState extends State<RunModelByCameraDemo> {
   }
 
   /// Returns Stack of bounding boxes
-  Widget boundingBoxes2(List<ResultObjectDetection?>? results) {
-    if (results == null) {
-      return Container();
-    }
-    return Stack(
-      children: results.map((e) => BoxWidget(result: e!)).toList(),
-    );
+Widget boundingBoxes2(List<ResultObjectDetection?>? results) {
+  if (results == null) {
+    return Container();
   }
 
-  void resultsCallback(List<ResultObjectDetection?> results) {
-    setState(() {
-      this.results = results;
-      results.forEach((element) {
-        print({
-          "rect": {
-            "left": element?.rect.left,
-            "top": element?.rect.top,
-            "width": element?.rect.width,
-            "height": element?.rect.height,
-            "right": element?.rect.right,
-            "bottom": element?.rect.bottom,
-          },
-        });
+  // Excluded class names
+  const excludedClasses = {
+    "Vaishravana_North",
+    "Virudhaka_South",
+    "Dhritarashtra_East",
+    "Virupaksha_West",
+  };
+
+  // Filter out excluded class names
+  final filtered = results.where((e) =>
+    e != null && !excludedClasses.contains(e.className)).toList();
+
+  return Stack(
+    children: filtered.map((e) => BoxWidget(result: e!)).toList(),
+  );
+}
+
+ void resultsCallback(List<ResultObjectDetection?> results) {
+  // Excluded class names
+  const excludedClasses = {
+    "Vaishravana_North",
+    "Virudhaka_South",
+    "Dhritarashtra_East",
+    "Virupaksha_West",
+  };
+
+  List<ResultObjectDetection?> filteredResults = [];
+
+  for (var element in results) {
+    if ((element?.score ?? 0) >= 0.40 &&
+        !excludedClasses.contains(element?.className?.trim())) {
+      filteredResults.add(element);
+
+      // Print object details
+      print({
+        "rect": {
+          "left": element?.rect.left,
+          "top": element?.rect.top,
+          "width": element?.rect.width,
+          "height": element?.rect.height,
+          "right": element?.rect.right,
+          "bottom": element?.rect.bottom,
+        },
+        "score": element?.score,
+        "className": element?.className,
       });
-    });
+    }
   }
+
+  setState(() {
+    this.results = filteredResults;
+  });
+}
+
 
   void resultsCallbackClassification(String classification) {
     setState(() {

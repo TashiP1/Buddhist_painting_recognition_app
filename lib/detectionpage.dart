@@ -55,32 +55,48 @@ class _detectionpageState extends State<detectionpage> {
   }
 
   Future runObjectDetection() async {
-    //pick a random image
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    objDetect = await _objectModel.getImagePrediction(
-        await File(image!.path).readAsBytes(),
-        minimumScore: 0.1,
-        IOUThershold: 0.3);
 
-    objDetect.forEach((element) {
-      Map<String, dynamic> objectData = {
-        "score": element?.score,
-        "className": element?.className,
-        "class": element?.classIndex,
-        "rect": {
-          "left": element?.rect.left,
-          "top": element?.rect.top,
-          "width": element?.rect.width,
-          "height": element?.rect.height,
-          "right": element?.rect.right,
-          "bottom": element?.rect.bottom,
-        },
-      };
-      detectedObjects.add(objectData);
-    });
+    if (image == null) return;
+
+    final List<ResultObjectDetection?> rawDetections = await _objectModel
+        .getImagePrediction(await File(image.path).readAsBytes(),
+            minimumScore: 0.5, IOUThershold: 0.5);
+
+    // Define excluded class names
+    const excludedClasses = {
+      "Vaishravana_North",
+      "Virudhaka_South",
+      "Dhritarashtra_East",
+      "Virupaksha_West",
+    };
+
+    // Clear previous results
+    detectedObjects.clear();
+    objDetect.clear();
+
+    for (var element in rawDetections) {
+      if ((element?.score ?? 0) >= 0.3 &&
+          !excludedClasses.contains(element?.className)) {
+        Map<String, dynamic> objectData = {
+          "score": element?.score,
+          "className": element?.className,
+          "class": element?.classIndex,
+          "rect": {
+            "left": element?.rect.left,
+            "top": element?.rect.top,
+            "width": element?.rect.width,
+            "height": element?.rect.height,
+            "right": element?.rect.right,
+            "bottom": element?.rect.bottom,
+          },
+        };
+        detectedObjects.add(objectData);
+        objDetect.add(element);
+      }
+    }
 
     setState(() {
-      //this.objDetect = objDetect;
       _image = File(image.path);
     });
   }
@@ -184,7 +200,8 @@ class _detectionpageState extends State<detectionpage> {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color.fromARGB(255, 223, 98, 40),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 223, 98, 40),
                               shape: RoundedRectangleBorder(
                                 // Set the button shape
                                 borderRadius: BorderRadius.circular(8),

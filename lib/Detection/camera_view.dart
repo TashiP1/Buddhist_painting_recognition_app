@@ -1,9 +1,8 @@
-import 'dart:typed_data';
+// ignore_for_file: avoid_print
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:image/image.dart';
 import 'package:flutter_pytorch/pigeon.dart';
 import 'package:flutter_pytorch/flutter_pytorch.dart';
 
@@ -16,8 +15,9 @@ class CameraView extends StatefulWidget {
   final Function(String classification) resultsCallbackClassification;
 
   /// Constructor
-  const CameraView(this.resultsCallback, this.resultsCallbackClassification);
+  const CameraView(this.resultsCallback, this.resultsCallbackClassification, {super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _CameraViewState createState() => _CameraViewState();
 }
 
@@ -96,6 +96,7 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
 
       // the display width of image on screen is
       // same as screenWidth while maintaining the aspectRatio
+      // ignore: use_build_context_synchronously
       Size screenSize = MediaQuery.of(context).size;
       CameraViewSingleton.screenSize = screenSize;
       CameraViewSingleton.ratio = screenSize.width / previewSize.height;

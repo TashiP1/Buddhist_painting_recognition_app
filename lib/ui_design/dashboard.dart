@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide CarouselController;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import '../Drawer/about_us.dart';
 import '../detectionpage.dart';
 import '/pickers/block_picker.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class dashboard extends StatefulWidget {
   const dashboard({super.key});
@@ -116,16 +115,16 @@ class _dashboardState extends State<dashboard> {
         Container(
             margin: const EdgeInsets.all(17),
             child: Column(
-              children: const [
+              children: [
                 Text(
-                  "A quote by the Dalai Lama",
+                  "BUDDHIST ART",
                   style: TextStyle(fontFamily: 'Dosis', fontSize: 17),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Text(
-                  "“All the elements of a Tibetan religious painting have a symbolic value. These symbols serve as aids to developing inner qualities on the spiritual path. The deities themselves are regarded as representing particular characteristics of enlightenment.“",
+                  "“In Bhutan, thangkas are deeply ingrained in the religious and cultural fabric, particularly within the Buddhist tradition, which is the dominant faith. Thangkas are not just paintings; they are revered objects representing Buddhas, deities, mandalas, and scenes from Buddhist teachings. They serve as both visual aids for meditation and prayer, as well as teaching tools for religious knowledge.“",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontStyle: FontStyle.italic,
